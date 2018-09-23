@@ -68,6 +68,14 @@ h4 {
     /*#999;*/
 }
 
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 p.creator {
     display: flex;
     justify-content: center;
