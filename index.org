@@ -35,4 +35,4 @@ text editor [[https://www.gnu.org/software/emacs/][GNU Emacs]] (which is basical
 which is a very nice mode for formatting and organizing documents.
 
 ** Posts
-   - [[./001.org][(2018-09-18) Publishing org-mode documents]]
+   - [[./1][(2018-09-18) Publishing org-mode documents]]
