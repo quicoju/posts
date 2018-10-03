@@ -165,7 +165,7 @@ prev
    With the current setup, it is possible to export my project to what
    I call a "/test path/" an dis just a place where I can review my
    publication before I can send it out to the real public site. So in
-   order to move my files to the actual publication site, I add three
+   order to move my files to the actual publishing site, I add three
    additional /"projects"/ to =`org-publish-project-alist'=, and the
    new projects happen to be identical to the previous three, except
    for their names and their /"target paths"/:
@@ -187,7 +187,7 @@ prev
           :components ("posts-notes-remote" "posts-static-remote"))))
    #+end_src
 
-   The /"target paths"/ for the real publication site point to a
+   The /"target paths"/ for the real publishing site point to a
    remote server, so the value of the remote folder can be represented
    as: ="/ssh:user@server:/path/to/dir/"=
 

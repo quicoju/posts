@@ -117,5 +117,5 @@ div.outline-2 {
     position: relative;
     background: black;
     color: white;
-
+    overflow: auto;
 }
