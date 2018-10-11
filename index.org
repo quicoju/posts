@@ -35,4 +35,5 @@ text editor [[https://www.gnu.org/software/emacs/][GNU Emacs]] (which is basical
 which is a very nice mode for formatting and organizing documents.
 
 ** Posts
-   - [[./1][(2018-09-18) Publishing org-mode documents]]
+   - [[./1][2018-09-18: Publishing org-mode documents]]
+   - [[./2][2018-10-11: Adding style to your org-mode exported HTML]]
