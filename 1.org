@@ -23,7 +23,7 @@
 #+LATEX_HEADER:
 
 #+BEGIN_navigator
-prev
+next
 #+END_navigator
 
 * Publishing org-mode documents
@@ -212,7 +212,7 @@ prev
    ~org~ files. Then go through the steps of giving a little bit more
    bit appealing to your exported project using some basic ~CSS~.
 
-** See Also
+** See also
    1. [[https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html][Publish html tutorial]]
    2. [[https://github.com/quicoju/emacs.d][My Emacs config]]
 

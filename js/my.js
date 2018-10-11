@@ -1,6 +1,6 @@
 function prev( directive, n ) {
     var text = "&lt; prev" ;
-    return directive.indexOf("prev") >= 0 && n > 0 ?
+    return n > 0 || directive.indexOf("prev") >= 0 ?
         link( "/" + (n-1), text ) : text;
 }
 
