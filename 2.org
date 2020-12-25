@@ -6,7 +6,7 @@
 
 #+OPTIONS: toc:nil num:nil ^:nil pri:t date:nil creator:t timestamp:nil
 #+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
-#+OPTIONS: html-preamble:t html-scripts:t html-style:nil
+#+OPTIONS: html-preamble:t html-scripts:t
 #+OPTIONS: html5-fancy:t tex:t
 
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/my.css"/>

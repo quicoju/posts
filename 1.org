@@ -6,7 +6,7 @@
 #+HTML_HEAD: <script type="text/javascript" src="js/my.js"></script>
 
 #+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
-#+OPTIONS: html-preamble:t html-scripts:t html-style:nil
+#+OPTIONS: html-preamble:t html-scripts:t
 #+OPTIONS: html5-fancy:t tex:t
 #+HTML_DOCTYPE: xhtml-strict
 #+HTML_CONTAINER: div
@@ -15,7 +15,7 @@
 #+HTML_LINK_HOME:
 #+HTML_LINK_UP:
 #+HTML_MATHJAX:
-#+HTML_HEAD:  
+#+HTML_HEAD:
 #+HTML_HEAD_EXTRA:
 #+SUBTITLE: ...for sure
 #+INFOJS_OPT:
@@ -64,7 +64,7 @@ next
    =png=, =jpeg=, etc. From this is quite obvious that I'm going to
    need a text editor, so my first choice is [[https://www.gnu.org/software/emacs/][GNU Emacs]], I've been
    using this tool for a while now, and feel quite comfortable with
-   it, (...although I'm still far away from mastering the tool). 
+   it, (...although I'm still far away from mastering the tool).
 
    For a while now [[https://www.gnu.org/software/emacs/][GNU Emacs]] comes with [[https://orgmode.org/][org-mode]] installed out of the
    box. [[https://orgmode.org/][org-mode]] is an Emacs mode for keeping and organizing notes on
@@ -110,7 +110,7 @@ next
 
    The next step is to define the directory paths in your project. In
    the most basic case, the project needs two different of paths:
-   
+
      1. /"Source"/ path, which is for working with the source
         (~org~) files and the initial place where the /"attachments"/
         will live
@@ -139,7 +139,7 @@ next
               :publishing-directory ,(getenv "POSTS_TEST_DIR")
               :recursive  t
               :publishing-function org-html-publish-to-html
-              :headline-levels 4 
+              :headline-levels 4
               :auto-preamble  t)
              ("posts-static"
               :base-directory ,(getenv "POSTS_BASE_DIR")
@@ -215,6 +215,3 @@ next
 ** See also
    1. [[https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html][Publish html tutorial]]
    2. [[https://github.com/quicoju/emacs.d][My Emacs config]]
-
-
-
