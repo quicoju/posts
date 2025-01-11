@@ -1,6 +1,6 @@
-#+TITLE: You ain't gonna need it
+#+TITLE: YAGNI
 #+DATE: [2018-10-07 Sun]
-#+SUBTITLE: ...for sure
+#+SUBTITLE:
 #+DESCRIPTION: Add CSS to org-mode exported HTML
 #+KEYWORDS: org-mode emacs html css 
 
@@ -221,4 +221,5 @@
    2. [[https://github.com/quicoju/emacs.d][My Emacs config]]
    3. [[https://github.com/quicoju/posts][YAGNI posts on GitHub]]
 
-
+#+BEGIN_navigator
+#+END_navigator
