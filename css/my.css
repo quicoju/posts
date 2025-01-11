@@ -98,3 +98,13 @@ code {
     overflow: auto;
 }
 
+.tag * {
+    font-family: Lucida Console, monospace;
+    font-size: 60%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px #eee;
+    position: relative;
+    padding: .1em .5em;
+}
+
