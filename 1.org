@@ -1,4 +1,4 @@
-#+Title: You ain't gonna need it
+#+Title: YAGNI
 #+Date: [2018-09-01 Sat]
 
 #+OPTIONS: toc:nil num:nil ^:nil pri:t date:nil creator:t timestamp:nil
@@ -17,7 +17,6 @@
 #+HTML_MATHJAX:
 #+HTML_HEAD:
 #+HTML_HEAD_EXTRA:
-#+SUBTITLE: ...for sure
 #+INFOJS_OPT:
 #+CREATOR: <a href="https://www.gnu.org/software/emacs/"><img src="./img/emacs.png" style="width:42px;height:42px;border:0;"></a><a href="https://orgmode.org"><img src="./img/org-mode.png" style="width:42px;height:42px;border:0;"</a>
 #+LATEX_HEADER:
@@ -215,3 +214,7 @@ next
 ** See also
    1. [[https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html][Publish html tutorial]]
    2. [[https://github.com/quicoju/emacs.d][My Emacs config]]
+
+#+BEGIN_navigator
+next
+#+END_navigator
