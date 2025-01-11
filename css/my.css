@@ -5,13 +5,14 @@ body {
     width: auto;
     max-width: 55em;
     margin: 0 auto;
+    padding: 0 5px;
 }
 
 /* Title */
 /* ===== */
 h1.title {
     font-size: 2em;
-    margin-top: 40px;
+    margin-top: 15px;
     text-align: left;
 }
 /* underline the title */
@@ -37,7 +38,7 @@ span.subtitle {
 h2 {
     font-size: 1.5em;
     font-weight: inherit;
-    margin-top: 35px;
+    margin-top: 15px;
     text-align: center;
 }
 
