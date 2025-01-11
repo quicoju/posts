@@ -1,4 +1,4 @@
-#+Title: You ain't gonna need it
+#+Title: YAGNI
 
 #+OPTIONS: toc:nil num:nil ^:nil pri:t date:nil creator:t timestamp:nil
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/my.css"/>
@@ -14,26 +14,13 @@
 #+HTML_LINK_HOME:
 #+HTML_LINK_UP:
 #+HTML_MATHJAX:
-#+HTML_HEAD:  
+#+HTML_HEAD:
 #+HTML_HEAD_EXTRA:
-#+SUBTITLE: ...for sure
+#+SUBTITLE:
 #+INFOJS_OPT:
 #+CREATOR: <a href="https://www.gnu.org/software/emacs/"><img src="./img/emacs.png" style="width:42px;height:42px;border:0;"></a><a href="https://orgmode.org"><img src="./img/org-mode.png" style="width:42px;height:42px;border:0;"</a>
 #+LATEX_HEADER:
 
-#+BEGIN_navigator
-next
-#+END_navigator
-
-* Apropos
-The aim of the following series of posts, is to start building a
-personal site from the ground up, also I'm interested on posting about
-stuff that may be good to have around when I need it.
-
-As a starting point, I have a hosting site and a web server running, a
-text editor [[https://www.gnu.org/software/emacs/][GNU Emacs]] (which is basically my workbench) with [[https://orgmode.org/][org-mode]]
-which is a very nice mode for formatting and organizing documents.
-
 ** Posts
-   - [[./1][2018-09-18: Publishing org-mode documents]]
-   - [[./2][2018-10-11: Adding style to your org-mode exported HTML]]
+*** [[./1.org][2018-09-18: Publishing org-mode documents]]
+*** [[./2.org][2018-10-11: Adding style to your org-mode exported HTML]]
