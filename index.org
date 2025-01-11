@@ -1,6 +1,7 @@
 #+Title: YAGNI
 
-#+OPTIONS: toc:nil num:nil ^:nil pri:t date:nil creator:t timestamp:nil
+#+DATE: 2025-01-11
+#+OPTIONS: toc:nil num:nil ^:nil pri:nil date: t creator:t timestamp:nil author:nil
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/my.css"/>
 #+HTML_HEAD: <script type="text/javascript" src="js/my.js"></script>
 
@@ -10,7 +11,7 @@
 #+HTML_DOCTYPE: xhtml-strict
 #+HTML_CONTAINER: div
 #+DESCRIPTION:
-#+KEYWORDS:
+#+KEYWORDS: index
 #+HTML_LINK_HOME:
 #+HTML_LINK_UP:
 #+HTML_MATHJAX:
@@ -18,9 +19,9 @@
 #+HTML_HEAD_EXTRA:
 #+SUBTITLE:
 #+INFOJS_OPT:
-#+CREATOR: <a href="https://www.gnu.org/software/emacs/"><img src="./img/emacs.png" style="width:42px;height:42px;border:0;"></a><a href="https://orgmode.org"><img src="./img/org-mode.png" style="width:42px;height:42px;border:0;"</a>
+#+CREATOR: <a href="https://www.gnu.org/software/emacs/"> <img src="./img/emacs.png" style="width:42px;height:42px;border:0;"> </a> <a href="https://orgmode.org"> <img src="./img/org-mode.png" style="width:42px;height:42px;border:0;"></a>
 #+LATEX_HEADER:
 
 ** Posts
-*** [[./1.org][2018-09-18: Publishing org-mode documents]]
-*** [[./2.org][2018-10-11: Adding style to your org-mode exported HTML]]
+*** 2018-08-18 | [[./1.org][Publishing org-mode documents]]                      :blogging:
+*** 2018-10-11 | [[./2.org][Adding style to your org-mode exported HTML]]       :blogging:self_hosting:
