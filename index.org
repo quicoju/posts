@@ -23,6 +23,6 @@
 #+LATEX_HEADER:
 
 ** Posts
-*** 2025-01-12 | [[./1.org][Publishing static content with org-mode]]  :blogging:orgmode:
+*** 2025-01-12 | [[./1.org][Publish a static site with Emacs]]          :blogging:orgmode:
 
 ***** Last updated on 2025-01-12

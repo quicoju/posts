@@ -25,7 +25,7 @@
 #+END_navigator
 
 
-* Publish static content with org-mode
+* Publish a static site with Emacs
 
 ** About
 
