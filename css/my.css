@@ -59,6 +59,13 @@ h4 {
     color: #5d478b;
 }
 
+h5 { /* for created and updated dates */
+    font-size: 1em;
+    font-weight: 100;
+    color: #5d478b;
+    text-align: right;
+}
+
 /* Links */
 /* ===== */
 a:link {
@@ -71,7 +78,7 @@ a:hover {
 
 p.creator {
     display: flex;
-    justify-content: left;
+    justify-content: center;
 }
 
 /* Code blocks */
