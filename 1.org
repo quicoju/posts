@@ -64,7 +64,7 @@ Given this, the =org-publish-project-alist= will can be declared as:
 
 #+begin_src elisp
         (setq org-publish-project-alist
-            `(("posts-to-html"                            ; first component
+            `(("posts-to-html"
                :base-directory "~/path/to/posts"
                :base-extension "org"
                :publishing-directory "/ssh:user@host:/var/www/posts"
@@ -72,7 +72,7 @@ Given this, the =org-publish-project-alist= will can be declared as:
                :publishing-function org-html-publish-to-html
                :headline-levels 4
                :auto-preamble  t)
-              ("posts-attachments"                        ; second component
+              ("posts-attachments"
                :base-directory "~/path/to/posts"
                :base-extension "css\\|jpg\\|png\\|js"
                :publishing-directory "/ssh:user@host:/var/www/posts"
@@ -95,3 +95,4 @@ With this definition now it's possible to export and publish the "posts" site us
 
 #+BEGIN_navigator
 #+END_navigator
+
