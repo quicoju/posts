@@ -25,5 +25,4 @@
 ** Posts
 *** 2025-01-12 | [[./1.org][Publishing static content with org-mode]]  :blogging:orgmode:
 
-**** Last updated on 2025-01-12
-
+***** Last updated on 2025-01-12
