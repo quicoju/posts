@@ -1,7 +1,7 @@
 #+Title: YAGNI
 
 #+DATE: 2025-01-11
-#+OPTIONS: toc:nil num:nil ^:nil pri:nil date: t creator:t timestamp:nil author:nil
+#+OPTIONS: toc:nil num:nil ^:nil pri:nil date:nil creator:t timestamp:nil author:nil
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/my.css"/>
 #+HTML_HEAD: <script type="text/javascript" src="js/my.js"></script>
 
@@ -23,5 +23,7 @@
 #+LATEX_HEADER:
 
 ** Posts
-*** 2018-08-18 | [[./1.org][Publishing org-mode documents]]                      :blogging:
-*** 2018-10-11 | [[./2.org][Adding style to your org-mode exported HTML]]       :blogging:self_hosting:
+*** 2025-01-12 | [[./1.org][Publishing static content with org-mode]]  :blogging:orgmode:
+
+**** Last updated on 2025-01-12
+
