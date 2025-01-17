@@ -39,8 +39,7 @@ This post will explain the steps to install the ESP-IDF framework, build sample 
 The first step is to enable the GURU repository and synchronize it, the preferred way is using [[https://wiki.gentoo.org/wiki/Eselect/Repository][eselect-repository]]:
 
 #+begin_src sh
-  emerge -a eselect-repository
-  eselect repository enable guru
+  eselect-repository enable guru
   emaint sync -r guru
 #+end_src
 
