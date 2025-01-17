@@ -28,24 +28,31 @@
 
 ** About
 
-The [[https://en.wikipedia.org/wiki/ESP32][ESP32]] is a family of cost accessible microcontrollers with lots of features that make them attractive for embedded systems hobbyists.
+The [[https://en.wikipedia.org/wiki/ESP32][ESP32]] is a family of cost accessible microcontrollers with many features
+that make them attractive to embedded systems hobbyists.
 
-[[https://github.com/espressif/esp-idf][ESP-IDF]] is Esspressif's official ioT development framework for a number of ESP32 SoC. This framework isn't provided in Gentoo's main repository but is available in the [[https://wiki.gentoo.org/wiki/Project:GURU][GURU]] repository.
+[[https://github.com/espressif/esp-idf][ESP-IDF]] is Esspressif's official IoT development framework for a number of ESP32
+SoC. Gentoo's main repository doesn't provide an ebuild for this framework, but
+it's available in the [[https://wiki.gentoo.org/wiki/Project:GURU][GURU]] repository.
 
-This post will explain the steps to install the ESP-IDF framework, build sample project and flash it in a ESP32-C3 development board.
+This post will explain the steps to install the ESP-IDF framework, then use it
+to build a sample project and flash it into a ESP32-C3 development board.
 
 ** Install ESP-IDF
 
-The first step is to enable the GURU repository and synchronize it, the preferred way is using [[https://wiki.gentoo.org/wiki/Eselect/Repository][eselect-repository]]:
+Enable the GURU repository and synchronize it, the preferred way is using
+[[https://wiki.gentoo.org/wiki/Eselect/Repository][eselect-repository]]:
 
 #+begin_src sh
-  eselect-repository enable guru
+  eselect repository enable guru
   emaint sync -r guru
 #+end_src
 
-It's important to [[https://wiki.gentoo.org/wiki//etc/portage/package.use][enable]] the =riscv32= use flag if one is going to be developing using a board with a RISCV microcontroller (i.e. ESP32-C3).
+It's important to /[[https://wiki.gentoo.org/wiki//etc/portage/package.use][enable]]/ the =riscv32= use flag if one is going to be
+developing for a board with a RISCV microcontroller (i.e. ESP32-C3).
 
-By the time of this writing, the following packages had to be [[https://wiki.gentoo.org/wiki//etc/portage/package.accept_keywords][unmasked]] in order to install the framework:
+By the time of this writing, the following packages had to be [[https://wiki.gentoo.org/wiki//etc/portage/package.accept_keywords][unmasked]] before
+being able to install the framework:
 
 #+begin_src text
 $ cat /etc/portage/package.accept_keywords/esp-idf 
@@ -58,7 +65,7 @@ dev-python/pydantic-settings
 dev-python/schema
 #+end_src
 
-Now it should be possible to install the framework:
+Install the ESP-IDF framework:
 
 #+begin_src sh
   emerge -a esp-idf
@@ -67,7 +74,9 @@ Now it should be possible to install the framework:
 
 ** Build and flash a test project
 
-The ESP-IDF framework comes with a number of examples. This section explains the steps to build and flash the /hello_world/ project:
+The ESP-IDF framework comes with a number of examples. This section explains the
+steps to follow for building and flashing the /hello_world/ project included in
+the framework:
 
 #+begin_src text
 $ equery f esp-idf | grep get-started/hello_world
@@ -81,27 +90,31 @@ $ equery f esp-idf | grep get-started/hello_world
 /usr/share/esp-idf/examples/get-started/hello_world/sdkconfig.ci
 #+end_src
 
-To build the project, copy the /hello_world/ folder to a place with write permissions (i.e. the =$HOME= folder).
+To build the project, copy the /hello_world/ direcotyr to a place with write
+permissions (i.e. the user's /home/ direcory).
 
 #+begin_src sh
   cp -r /usr/share/esp-idf/examples/get-started/hello_world ~
   cd ~/hello_world
 #+end_src
 
-Now configure the target to the corresponding development board; in this case set it to =esp32c3= which corresponds to the /ESP32-C3-DevKitC/.
+Now configure the project's target to the correct development board; in this
+example it's set to =esp32c3= that corresponds to the /ESP32-C3-DevKitC/.
 
 #+begin_src sh
   idf set-target esp32c3
 #+end_src
 
-Connect the development board to the computer and proceed to build, flash and monitor the project:
+Connect the development board to the computer and proceed to build it, flash it
+and monitor the execution:
 
 #+begin_src sh
   idf build
   idf flash monitor
 #+end_src
 
-The =PORT= for flashing the microcontroller should be automatically detected; if not, refer to the references in the /See also/ section.
+The =PORT= used for flashing the microcontroller should be automatically
+detected; if it wasn't, refer to the links in the /See also/ section.
 
 ** See also
   1. [[https://github.com/espressif/esp-idf][The ESP-IDF repository]]
