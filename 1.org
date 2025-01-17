@@ -2,7 +2,7 @@
 #+DATE: [2025-01-09 Thu]
 #+SUBTITLE:
 #+DESCRIPTION:
-#+KEYWORDS: blogging org-mode
+#+KEYWORDS: blogging orgmode
 
 #+OPTIONS: toc:nil num:nil ^:nil pri:t date:nil creator:t timestamp:nil author:nil
 #+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
@@ -22,6 +22,7 @@
 
 
 #+BEGIN_navigator
+next
 #+END_navigator
 
 
@@ -94,5 +95,6 @@ With this definition now it's possible to export and publish the "posts" site us
 **** Created on 2025-01-12
 
 #+BEGIN_navigator
+next
 #+END_navigator
 

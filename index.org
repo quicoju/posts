@@ -24,5 +24,6 @@
 
 ** Posts
 *** 2025-01-12 | [[./1.org][Publish a static site with Emacs]]          :blogging:orgmode:
+*** 2025-01-17 | [[./2.org][Setup ESP32 development tools in Gentoo]] :gentoo:embedded:esp32:
 
 ***** Last updated on 2025-01-12

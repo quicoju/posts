@@ -1,0 +1,119 @@
+#+TITLE: YAGNI
+#+DATE: [2025-01-17 Fri]
+#+SUBTITLE:
+#+DESCRIPTION:
+#+KEYWORDS: gentooo embedded esp32
+
+#+OPTIONS: toc:nil num:nil ^:nil pri:nil date:nil creator:t timestamp:nil author:nil
+#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
+#+OPTIONS: html-preamble:t html-scripts:t
+#+OPTIONS: html5-fancy:t tex:t
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/my.css"/>
+#+HTML_HEAD: <script type="text/javascript" src="js/my.js"></script>
+#+HTML_DOCTYPE: xhtml-strict
+#+HTML_CONTAINER: div
+#+HTML_LINK_HOME:
+#+HTML_LINK_UP:
+#+HTML_MATHJAX:
+#+HTML_HEAD_EXTRA:
+#+INFOJS_OPT:
+#+CREATOR: <a href="https://www.gnu.org/software/emacs/"><img src="./img/emacs.png" style="width:42px;height:42px;border:0;"></a><a href="https://orgmode.org"><img src="./img/org-mode.png" style="width:42px;height:42px;border:0;"></a>
+
+
+#+BEGIN_navigator
+#+END_navigator
+
+* Setup ESP32 development tools in Gentoo
+
+** About
+
+The [[https://en.wikipedia.org/wiki/ESP32][ESP32]] is a family of cost accessible microcontrollers with lots of features that make them attractive for embedded systems hobbyists.
+
+[[https://github.com/espressif/esp-idf][ESP-IDF]] is Esspressif's official ioT development framework for a number of ESP32 SoC. This framework isn't provided in Gentoo's main repository but is available in the [[https://wiki.gentoo.org/wiki/Project:GURU][GURU]] repository.
+
+This post will explain the steps to install the ESP-IDF framework, build sample project and flash it in a ESP32-C3 development board.
+
+** Install ESP-IDF
+
+The first step is to enable the GURU repository and synchronize it, the preferred way is using [[https://wiki.gentoo.org/wiki/Eselect/Repository][eselect-repository]]:
+
+#+begin_src sh
+  emerge -a eselect-repository
+  eselect repository enable guru
+  emaint sync -r guru
+#+end_src
+
+It's important to [[https://wiki.gentoo.org/wiki//etc/portage/package.use][enable]] the =riscv32= use flag if one is going to be developing using a board with a RISCV microcontroller (i.e. ESP32-C3).
+
+By the time of this writing, the following packages had to be [[https://wiki.gentoo.org/wiki//etc/portage/package.accept_keywords][unmasked]] in order to install the framework:
+
+#+begin_src text
+$ cat /etc/portage/package.accept_keywords/esp-idf 
+dev-embedded/esp-*::guru
+dev-embedded/freertos-gdb::guru
+dev-embedded/idf-component-manager::guru
+dev-python/jsonref
+dev-python/kconfiglib
+dev-python/pydantic-settings
+dev-python/schema
+#+end_src
+
+Now it should be possible to install the framework:
+
+#+begin_src sh
+  emerge -a esp-idf
+#+end_src
+
+
+** Build and flash a test project
+
+The ESP-IDF framework comes with a number of examples. This section explains the steps to build and flash the /hello_world/ project:
+
+#+begin_src text
+$ equery f esp-idf | grep get-started/hello_world
+/usr/share/esp-idf/examples/get-started/hello_world
+/usr/share/esp-idf/examples/get-started/hello_world/CMakeLists.txt
+/usr/share/esp-idf/examples/get-started/hello_world/README.md
+/usr/share/esp-idf/examples/get-started/hello_world/main
+/usr/share/esp-idf/examples/get-started/hello_world/main/CMakeLists.txt
+/usr/share/esp-idf/examples/get-started/hello_world/main/hello_world_main.c
+/usr/share/esp-idf/examples/get-started/hello_world/pytest_hello_world.py
+/usr/share/esp-idf/examples/get-started/hello_world/sdkconfig.ci
+#+end_src
+
+To build the project, copy the /hello_world/ folder to a place with write permissions (i.e. the =$HOME= folder).
+
+#+begin_src sh
+  cp -r /usr/share/esp-idf/examples/get-started/hello_world ~
+  cd ~/hello_world
+#+end_src
+
+Now configure the target to the corresponding development board; in this case set it to =esp32c3= which corresponds to the /ESP32-C3-DevKitC/.
+
+#+begin_src sh
+  idf set-target esp32c3
+#+end_src
+
+Connect the development board to the computer and proceed to build, flash and monitor the project:
+
+#+begin_src sh
+  idf build
+  idf flash monitor
+#+end_src
+
+The =PORT= for flashing the microcontroller should be automatically detected; if not, refer to the references in the /See also/ section.
+
+** See also
+  1. [[https://github.com/espressif/esp-idf][The ESP-IDF repository]]
+  2. [[https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/index.html][The ESP-IDF programming guide]]
+  3. [[https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/get-started/linux-macos-setup.html#get-started-linux-macos-first-steps][Build the hello_world example from the manual]]
+
+
+**** Created on 2025-01-17
+
+#+BEGIN_navigator
+#+END_navigator
+
+
+#  LocalWords:  RISCV microcontrollers microcontroller
