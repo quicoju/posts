@@ -79,22 +79,23 @@ steps to follow for building and flashing the /hello_world/ project included in
 the framework:
 
 #+begin_src text
-$ equery f esp-idf | grep get-started/hello_world
-/usr/share/esp-idf/examples/get-started/hello_world
-/usr/share/esp-idf/examples/get-started/hello_world/CMakeLists.txt
-/usr/share/esp-idf/examples/get-started/hello_world/README.md
-/usr/share/esp-idf/examples/get-started/hello_world/main
-/usr/share/esp-idf/examples/get-started/hello_world/main/CMakeLists.txt
-/usr/share/esp-idf/examples/get-started/hello_world/main/hello_world_main.c
-/usr/share/esp-idf/examples/get-started/hello_world/pytest_hello_world.py
-/usr/share/esp-idf/examples/get-started/hello_world/sdkconfig.ci
+  $ EXAMPLE=$(equery f esp-idf | grep /hello_world | head -1)
+  $ tree $EXAMPLE
+  /usr/share/esp-idf/examples/get-started/hello_world
+  ├── CMakeLists.txt
+  ├── README.md
+  ├── main
+  │   ├── CMakeLists.txt
+  │   └── hello_world_main.c
+  ├── pytest_hello_world.py
+  └── sdkconfig.ci
 #+end_src
 
 To build the project, copy the /hello_world/ direcotyr to a place with write
 permissions (i.e. the user's /home/ direcory).
 
 #+begin_src sh
-  cp -r /usr/share/esp-idf/examples/get-started/hello_world ~
+  cp -r $EXAMPLE ~
   cd ~/hello_world
 #+end_src
 
