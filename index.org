@@ -25,5 +25,4 @@
 ** Posts
 *** 2025-01-12 | [[./1.org][Publish a static site with Emacs]]          :blogging:orgmode:
 *** 2025-01-17 | [[./2.org][Setup ESP32 development tools in Gentoo]] :gentoo:embedded:esp32:
-*** 2025-02-24 | [[./3.org][Setup the RISC-V GNU Toolchain to run FreeRTOS in QEMU]] :riscv:freertos:qemu:
-
+*** 2025-02-24 | [[./3.org][The RISC-V GNU Toolchain, FreeRTOS and QEMU]] :riscv:freertos:qemu:

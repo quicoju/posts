@@ -24,7 +24,7 @@
 #+BEGIN_navigator
 #+END_navigator
 
-* Setup the RISC-V GNU Toolchain to run FreeRTOS in QEMU
+* The RISC-V GNU Toolchain, FreeRTOS and QEMU
 
 ** About
 
