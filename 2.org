@@ -22,6 +22,7 @@
 
 
 #+BEGIN_navigator
+next
 #+END_navigator
 
 * Setup ESP32 development tools in Gentoo
@@ -126,6 +127,7 @@ detected; if it wasn't, refer to the links in the /See also/ section.
 **** Created on 2025-01-17
 
 #+BEGIN_navigator
+next
 #+END_navigator
 
 

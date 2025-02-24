@@ -1,0 +1,103 @@
+#+TITLE: YAGNI
+#+DATE: [2025-02-24 Mon]
+#+SUBTITLE:
+#+DESCRIPTION:
+#+KEYWORDS: crossdev freertos riscv qemu
+
+#+OPTIONS: toc:nil num:nil ^:nil pri:nil date:nil creator:t timestamp:nil author:nil
+#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
+#+OPTIONS: html-preamble:t html-scripts:t
+#+OPTIONS: html5-fancy:t tex:t
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/my.css"/>
+#+HTML_HEAD: <script type="text/javascript" src="js/my.js"></script>
+#+HTML_DOCTYPE: xhtml-strict
+#+HTML_CONTAINER: div
+#+HTML_LINK_HOME:
+#+HTML_LINK_UP:
+#+HTML_MATHJAX:
+#+HTML_HEAD_EXTRA:
+#+INFOJS_OPT:
+#+CREATOR: <a href="https://www.gnu.org/software/emacs/"><img src="./img/emacs.png" style="width:42px;height:42px;border:0;"></a><a href="https://orgmode.org"><img src="./img/org-mode.png" style="width:42px;height:42px;border:0;"></a>
+
+
+#+BEGIN_navigator
+#+END_navigator
+
+* Setup the RISC-V GNU Toolchain to run FreeRTOS in QEMU
+
+** About
+
+Emulation eases the software development process when the target architecture is
+different than the host machine. This document explains how to setup a
+development [[https://en.wikipedia.org/wiki/Toolchain][Toolchain]] and use the Quick Emulator ([[https://www.qemu.org/][QEMU)]] to run a [[https://www.freertos.org/Why-FreeRTOS/What-is-FreeRTOS][FreeRTOS]] "demo"
+targeted to the RISCV-V architecture.
+
+The explanation goes for two different operating systems, Gentoo GNU/Linux and
+OpenBSD.
+
+** Setup in Gentoo
+*** Install the RISC-V GNU Toolchain
+=crossdev= enables a Gentoo system to provide cross-compilation tools; the first
+step is to install it and create a dedicated repository for toolchains that are
+to be built.
+
+#+begin_src sh
+  # install the packages
+  emerge crossdev
+  emerge eselect-repository
+
+  # create the dedicated repository
+  eselect repository create crossdev
+
+  # build the risc-v toolchain for baremetal binaries
+   crossdev --target riscv64-unknown-elf
+#+end_src
+
+*** Install QEMU for RISC-V
+Gentoo allows to build a minimal RISC-V system emulator by setting
+=QEMU_SOFTMMU_TARGETS= in =portage.use=:
+#+begin_src sh
+  USE_FILE=/etc/portage/portage.use/qemu
+  echo 'app-emulation/qemu QEMU_SOFTMMU_TARGETS: riscv64 riscv32' >> $USE_FILE
+  emerge -a qemu
+#+end_src
+
+** Setup in OpenBSD
+The OpenBSD's package system already provides packages for the RISC-V GNU
+Toolchain and the QEMU system, so the needed tools can be installed by running:
+#+begin_src sh
+  pkg_add riscv-elf-newlib qemu gmake
+#+end_src
+
+** Prepare the FreeRTOS sources
+Once the /toolchain/ and the emulator are installed, it's should be now possible
+to build and run the corresponding FreeRTOS "demo".
+#+begin_src sh
+  # fetch the FreeRTOS sources
+  git clone https://github.com/FreeRTOS/FreeRTOS.git --recurse-submodules
+
+  # build the demo targeted to the GNU Toolchain for RISC-V on QEMU
+  cd to the Demo FreeRTOS/Demo/RISC-V-Qemu-virt_GCC
+  make
+
+  # run the demo
+  qemu-system-riscv32 -nographic -machine virt -net none \
+  -chardev stdio,id=con,mux=on -serial chardev:con \
+  -mon chardev=con,mode=readline -bios none \
+  -smp 4 -kernel ./build/RTOSDemo.axf
+#+end_src
+
+Terminate the emulation using the key combination ~Ctrl-a x~.
+
+** See also
+1. [[https://wiki.gentoo.org/wiki/Crossdev][Crossdev]]
+2. The FreeRTOS [[https://github.com/FreeRTOS/FreeRTOS.git][repository]]
+
+**** Created on 2025-02-24
+
+#+BEGIN_navigator
+#+END_navigator
+
+
+#  LocalWords:  Toolchain
