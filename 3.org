@@ -51,7 +51,7 @@ to be built.
   eselect repository create crossdev
 
   # build the risc-v toolchain for baremetal binaries
-   crossdev --target riscv64-unknown-elf
+  crossdev --target riscv64-unknown-elf
 #+end_src
 
 *** Install QEMU for RISC-V
@@ -70,7 +70,7 @@ Toolchain and the QEMU system, so the needed tools can be installed by running:
   pkg_add riscv-elf-newlib qemu gmake
 #+end_src
 
-** Prepare the FreeRTOS sources
+** Run the FreeRTOS demo
 Once the /toolchain/ and the emulator are installed, it's should be now possible
 to build and run the corresponding FreeRTOS "demo".
 #+begin_src sh
