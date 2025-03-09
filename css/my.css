@@ -6,6 +6,7 @@ body {
     max-width: 55em;
     margin: 0 auto;
     padding: 0 5px;
+    background-color: #fdf6e3;
 }
 
 /* Title */
@@ -94,13 +95,14 @@ code {
     white-space: nowrap;
 }
 
+.src {
+    background-color: #fdf6e3;
+}
+
 .org-src-container {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px;
+    box-shadow: 3px 3px 3px #aaa;
     font-family: Lucida Console, monospace;
-    font-size: 80%;
-    margin: 1em auto;
-    padding: .1em .5em;
     position: relative;
     overflow: auto;
 }
