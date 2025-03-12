@@ -4,22 +4,6 @@
 #+DESCRIPTION:
 #+KEYWORDS: gentooo embedded esp32
 
-#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
-#+OPTIONS: html-preamble:t html-scripts:t
-#+OPTIONS: html5-fancy:t tex:t
-
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/my.css"/>
-#+HTML_HEAD: <script type="text/javascript" src="js/my.js"></script>
-#+HTML_DOCTYPE: xhtml-strict
-#+HTML_CONTAINER: div
-#+HTML_LINK_HOME:
-#+HTML_LINK_UP:
-#+HTML_MATHJAX:
-#+HTML_HEAD_EXTRA:
-#+INFOJS_OPT:
-#+CREATOR: <a href="https://www.gnu.org/software/emacs/"><img src="./img/emacs.png" style="width:42px;height:42px;border:0;"></a><a href="https://orgmode.org"><img src="./img/org-mode.png" style="width:42px;height:42px;border:0;"></a>
-
-
 #+BEGIN_navigator
 next
 #+END_navigator
