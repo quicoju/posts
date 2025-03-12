@@ -76,8 +76,3 @@ With this definition now it's possible to export and publish the "posts" site us
   1. [[https://orgmode.org/manual/Publishing.html][Org-mode manual]]
 
 **** Created on 2025-01-12
-
-#+BEGIN_navigator
-next
-#+END_navigator
-

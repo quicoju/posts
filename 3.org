@@ -79,8 +79,4 @@ Terminate the emulation using the key combination ~Ctrl-a x~.
 
 **** Created on 2025-02-24
 
-#+BEGIN_navigator
-#+END_navigator
-
-
 #  LocalWords:  Toolchain
