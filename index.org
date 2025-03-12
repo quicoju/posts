@@ -1,26 +1,25 @@
 #+Title: YAGNI
-
-#+DATE: 2025-01-11
-#+OPTIONS: toc:nil num:nil ^:nil pri:nil date:nil creator:t timestamp:nil author:nil
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/my.css"/>
-#+HTML_HEAD: <script type="text/javascript" src="js/my.js"></script>
+#+DATE: [2025-01-11]
+#+SUBTITLE:
+#+DESCRIPTION:
+#+KEYWORDS: index
 
 #+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
 #+OPTIONS: html-preamble:t html-scripts:t html-style:nil
 #+OPTIONS: html5-fancy:t tex:t
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/my.css"/>
+#+HTML_HEAD: <script type="text/javascript" src="js/my.js"></script>
 #+HTML_DOCTYPE: xhtml-strict
 #+HTML_CONTAINER: div
-#+DESCRIPTION:
-#+KEYWORDS: index
 #+HTML_LINK_HOME:
 #+HTML_LINK_UP:
 #+HTML_MATHJAX:
 #+HTML_HEAD:
 #+HTML_HEAD_EXTRA:
-#+SUBTITLE:
 #+INFOJS_OPT:
 #+CREATOR: <a href="https://www.gnu.org/software/emacs/"> <img src="./img/emacs.png" style="width:42px;height:42px;border:0;"> </a> <a href="https://orgmode.org"> <img src="./img/org-mode.png" style="width:42px;height:42px;border:0;"></a>
-#+LATEX_HEADER:
+
 
 ** Posts
 *** 2025-01-12 | [[./1.org][Publish a static site with Emacs]]          :blogging:orgmode:
