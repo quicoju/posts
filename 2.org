@@ -1,12 +1,11 @@
 #+TITLE: YAGNI
-#+DATE: [2025-01-17 Fri]
+#+DATE: 2025-01-17
 #+SUBTITLE:
 #+DESCRIPTION:
 #+KEYWORDS: gentooo embedded esp32
 
-#+BEGIN_navigator
-next
-#+END_navigator
+#+HTML_LINK_HOME: index.html
+#+HTML_LINK_UP: 1.html
 
 * Setup ESP32 development tools in Gentoo
 
@@ -39,7 +38,7 @@ By the time of this writing, the following packages had to be [[https://wiki.gen
 being able to install the framework:
 
 #+begin_src text
-$ cat /etc/portage/package.accept_keywords/esp-idf 
+$ cat /etc/portage/package.accept_keywords/esp-idf
 dev-embedded/esp-*::guru
 dev-embedded/freertos-gdb::guru
 dev-embedded/idf-component-manager::guru
@@ -75,8 +74,8 @@ the framework:
   └── sdkconfig.ci
 #+end_src
 
-To build the project, copy the /hello_world/ direcotyr to a place with write
-permissions (i.e. the user's /home/ direcory).
+To build the project, copy the /hello_world/ directory to a place with write
+permissions (i.e. the user's /home/ directory).
 
 #+begin_src sh
   cp -r $EXAMPLE ~
@@ -105,8 +104,5 @@ detected; if it wasn't, refer to the links in the /See also/ section.
   1. [[https://github.com/espressif/esp-idf][The ESP-IDF repository]]
   2. [[https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/index.html][The ESP-IDF programming guide]]
   3. [[https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/get-started/linux-macos-setup.html#get-started-linux-macos-first-steps][Build the hello_world example from the manual]]
-
-
-**** Created on 2025-01-17
 
 #  LocalWords:  RISCV microcontrollers microcontroller

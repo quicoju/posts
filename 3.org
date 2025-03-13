@@ -1,11 +1,11 @@
 #+TITLE: YAGNI
-#+DATE: [2025-02-24 Mon]
+#+DATE: 2025-02-24
 #+SUBTITLE:
 #+DESCRIPTION:
 #+KEYWORDS: crossdev freertos riscv qemu
 
-#+BEGIN_navigator
-#+END_navigator
+#+HTML_LINK_HOME: index.html
+#+HTML_LINK_UP: 2.html
 
 * The RISC-V GNU Toolchain, FreeRTOS and QEMU
 
@@ -76,7 +76,5 @@ Terminate the emulation using the key combination ~Ctrl-a x~.
 ** See also
 1. [[https://wiki.gentoo.org/wiki/Crossdev][Crossdev]]
 2. The FreeRTOS [[https://github.com/FreeRTOS/FreeRTOS.git][repository]]
-
-**** Created on 2025-02-24
 
 #  LocalWords:  Toolchain
