@@ -17,24 +17,32 @@ body {
 .title {
     font-size: 2.3rem;
     font-weight: 400;
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-bottom: 1.5rem;
     line-height: 1;
     color: #a00000;
+    text-align: center;
 }
 
 .title::after { /* title underline */
-  content: "";
-  display: block;
-  width: 100%;
-  border-bottom: 1px solid;
+    content: "";
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid;
 }
+
+.subtitle {
+    font-size: 1rem;
+    font-style: italic;
+}
+
 
 /* Headers */
 /* ======= */
 h2 {
     font-size: 1.8rem;
     font-weight: 200;
+    text-align: center;
 }
 
 h3 {
