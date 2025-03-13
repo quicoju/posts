@@ -1,80 +1,70 @@
-/* Global style */
-/* ============ */
-body {
-    font-family: "DejaVu Sans";
-    width: auto;
-    max-width: 55em;
-    margin: 0 auto;
-    padding: 0 5px;
-    background-color: #fdf6e3;
+#org-div-home-and-up {
+    font-size: 0.8rem;
+    margin-top: 1rem;
 }
 
-/* Title */
-/* ===== */
-h1.title {
-    font-size: 2em;
-    margin-top: 15px;
-    text-align: left;
+body {
+    font-family: Georgia, serif;
+    max-width: 60em;
+    margin: auto;
+    padding: 0 5px;
+    width: auto;
+    background-color:  #fffff3;
+    color: #111213;
+    counter-reset: sidenote-counter;
 }
-/* underline the title */
-h1.title::after {
+
+.title {
+    font-size: 2.3rem;
+    font-weight: 400;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    line-height: 1;
+    color: #a00000;
+}
+
+.title::after { /* title underline */
   content: "";
   display: block;
   width: 100%;
   border-bottom: 1px solid;
 }
 
-span.subtitle {
-    font-size: 0.7em;
-    text-align: justify;
-}
-
-.navigator {
-    display: flex;
-    justify-content: center;
-}
-
 /* Headers */
 /* ======= */
 h2 {
-    font-size: 1.5em;
-    font-weight: inherit;
-    margin-top: 15px;
-    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 200;
 }
 
 h3 {
-    font-size: 1.3em;
-    font-weight: inherit;
-    margin-top: 30px;
-    text-align: left;
-    /*#999;*/
+    font-size: 1.3rem;
+    font-style: italic;
+    font-weight: 150;
 }
 
 h4 {
     font-size: 1em;
-    font-weight: 100;
     margin-top: 10px;
     text-align: left;
     letter-spacing: -1px;
-    color: #5d478b;
 }
 
-h5 { /* for created and updated dates */
-    font-size: 1em;
-    font-weight: 100;
-    color: #5d478b;
+
+/* Paragraphs */
+/* ========== */
+
+p {
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
+    padding-right: 0;
+    vertical-align: baseline;
+}
+
+p.date {
+    font-size: 0.8em;
+    font-style: italic;
     text-align: right;
-}
-
-/* Links */
-/* ===== */
-a:link {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
 }
 
 p.creator {
@@ -82,31 +72,41 @@ p.creator {
     justify-content: center;
 }
 
+/* Links */
+/* ===== */
+
+a:link,
+a:visited {
+    color: inherit;
+    text-underline-offset: 0.1em;
+    text-decoration-thickness: 0.05em;
+}
+
+a:hover {
+    text-decoration-style: dashed;
+}
+
 /* Code blocks */
 /* =========== */
-code {
+pre.src {
+    font-size: 0.9em;
+    font-family: Lucida Console, Consolas, "Liberation Mono", monospace;
+    line-height: 1.5;
+    display: block;
+
     padding: 2px 5px;
-    margin: auto 1px;
     border: 1px solid #bbb;
-    border-radius: 5px;
-    background-clip: padding-box;
-    /*color: #333;*/
-    font-size: 90%;
-    white-space: nowrap;
-}
-
-.src {
-    background-color: #fdf6e3;
-}
-
-.org-src-container {
-    border: 1px;
+    border-radius: 6px;
     box-shadow: 3px 3px 3px #aaa;
-    font-family: Lucida Console, monospace;
-    position: relative;
     overflow: auto;
+
+    /* See https://github.com/edwardtufte/tufte-css/issues/81#issuecomment-261953409 */
+    -webkit-text-size-adjust: 100%;
+
 }
 
+/* Tags */
+/* ==== */
 .tag * {
     font-family: Lucida Console, monospace;
     font-size: 60%;
@@ -116,4 +116,3 @@ code {
     position: relative;
     padding: .1em .5em;
 }
-
