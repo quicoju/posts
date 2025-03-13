@@ -1,6 +1,6 @@
 #+TITLE: YAGNI
 #+DATE: 2025-01-17
-#+SUBTITLE:
+#+SUBTITLE: You are(n't)? gonna need it...
 #+DESCRIPTION:
 #+KEYWORDS: gentooo embedded esp32
 

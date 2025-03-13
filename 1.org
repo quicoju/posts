@@ -1,6 +1,6 @@
 #+TITLE: YAGNI
 #+DATE: 2025-01-09
-#+SUBTITLE:
+#+SUBTITLE: You are(n't)? gonna need it...
 #+DESCRIPTION:
 #+KEYWORDS: blogging orgmode
 

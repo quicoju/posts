@@ -1,6 +1,6 @@
 #+TITLE: YAGNI
 #+DATE: 2025-02-24
-#+SUBTITLE:
+#+SUBTITLE: You are(n't)? gonna need it...
 #+DESCRIPTION:
 #+KEYWORDS: crossdev freertos riscv qemu
 
