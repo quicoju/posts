@@ -61,7 +61,7 @@ to build and run the corresponding FreeRTOS "demo".
   git clone https://github.com/FreeRTOS/FreeRTOS.git --recurse-submodules
 
   # build the demo targeted to the GNU Toolchain for RISC-V on QEMU
-  cd to the Demo FreeRTOS/Demo/RISC-V-Qemu-virt_GCC
+  cd FreeRTOS/Demo/RISC-V-Qemu-virt_GCC
   gmake
 
   # run the demo
