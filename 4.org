@@ -1,0 +1,99 @@
+#+TITLE: YAGNI
+#+DATE: 2025-05-01
+#+SUBTITLE: You are(n't)? gonna need it...
+#+DESCRIPTION: Debug a FreeRTOS RISC-V demo running on QEMU
+#+KEYWORDS: debug freertos riscv qemu openbsd
+
+#+HTML_LINK_HOME: index.html
+#+HTML_LINK_UP: 3.html
+
+* Debug a FreeRTOS RISC-V application running on QEMU
+
+** About
+
+The [[./3.org][previous]] post explained how use OpenBSD to build and run a FreeRTOS "demo"
+application targeted to RISC-V on QEMU. This post will now explain how to setup
+the tools and build the application to debug it using GDB.
+
+** Install GDB for RISC-V
+
+In OpenBSD, the package =riscv32-esp-elf-gdb= provides the gdb executable for
+the RISC-V architecture targeted for bare-metal applications, it can be
+installed by running:
+
+#+begin_src sh
+  pkg_add riscv32-esp-elf-gdb
+#+end_src
+
+The gdb executable will be installed in
+=/usr/local/riscv32-esp-elf/bin/riscv32-esp-elf-gdb=, for convenience it's a
+good idea to define an alias for this long name:
+
+#+begin_src sh
+  alias gdb-rv=/usr/local/riscv32-esp-elf/bin/riscv32-esp-elf-gdb
+#+end_src
+
+** Build and run the application with debugging symbols
+
+The [[./3.org][previous]] post used the FreeRTOS' [[https://github.com/FreeRTOS/FreeRTOS/tree/main/FreeRTOS/Demo/RISC-V-Qemu-virt_GCC][RISC-V-Qemu-virt_GCC]] demo as an example;
+here we'll continue using the same example. To build the application for
+debugging, we need to adjust the =Makefile= to use the correct =CFLAGS=.
+
+Replace snippet:
+#+begin_src c
+  ifeq ($(DEBUG), 1)
+    CFLAGS += -Og -ggdb3
+#+end_src
+
+With this:
+#+begin_src c
+  ifeq ($(DEBUG), 1)
+    CFLAGS += -O0 -gdwarf-2
+#+end_src
+
+The application can now be built for debugging:
+#+begin_src sh
+  DEBUG=1 gmake
+#+end_src
+
+Run the application with =qemu= using the =-s= switch to enable the gdb server
+which is accessible on /port 1234/:
+#+begin_src sh
+    # run the demo
+  qemu-system-riscv32 -s -nographic -machine virt -net none \
+  -chardev stdio,id=con,mux=on -serial chardev:con \
+  -mon chardev=con,mode=readline -bios none \
+  -smp 4 -kernel ./build/RTOSDemo.axf
+#+end_src
+
+** Connect GDB with the remote target
+
+Once the application is running, we can execute =gdb= in another terminal to
+connect to the remote target (using the alias defined previously):
+
+#+begin_src sh
+  gdb-rv build/RTOSDemo.axf
+#+end_src
+
+From the =gdb='s prompt, set the architecture, connect to the remote target and
+set a breakpoint:
+
+#+begin_src text
+  (gdb) set architecture riscv:rv64
+  (gdb) target remote localhost:1234
+  (gdb) b main_blinky.c:81
+  Breakpoint 1 at 0x800001f4: file main_blinky.c, line 81.
+  (gdb) continue
+#+end_src
+
+After entering the =continue= command, the application will to execute until it
+hits the breakpoint; at this point we have our debugging session ready for use.
+
+** See also
+
+1. The [[https://github.com/FreeRTOS/FreeRTOS/tree/main/FreeRTOS/Demo/RISC-V-Qemu-virt_GCC][FreeRTOS demo]]
+2. [[https://www.reddit.com/r/RISCV/comments/plgwyk/riscv64unknownelfgdb_gives_dwarf_error_when/][Solution]] for Dwarf2 error in GDB
+3. [[https://course.ece.cmu.edu/~ee349/f-2012/lab2/qemu.pdf][QEMU + GDB Debugging Environment]]
+
+
+#  LocalWords:  QEMU OpenBSD GDB breakpoint
