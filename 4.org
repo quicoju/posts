@@ -11,41 +11,42 @@
 
 ** About
 
-The [[./3.org][previous]] post explained how use OpenBSD to build and run a FreeRTOS "demo"
-application targeted to RISC-V on QEMU. This post will now explain how to setup
-the tools and build the application to debug it using GDB.
+The [[./3.org][previous]] post explained how to use OpenBSD to build and run a FreeRTOS
+RISC-V "demo" inside QEMU. This post will explain how to build the same
+application for debugging and setup the tools to debug it.
 
 ** Install GDB for RISC-V
 
-In OpenBSD, the package =riscv32-esp-elf-gdb= provides the gdb executable for
-the RISC-V architecture targeted for bare-metal applications, it can be
-installed by running:
+In OpenBSD, the package =riscv32-esp-elf-gdb= provides the debugger for the
+RISC-V architecture targeted for bare-metal applications, it can be installed by
+running:
 
 #+begin_src sh
   pkg_add riscv32-esp-elf-gdb
 #+end_src
 
-The gdb executable will be installed in
-=/usr/local/riscv32-esp-elf/bin/riscv32-esp-elf-gdb=, for convenience it's a
-good idea to define an alias for this long name:
+The debugger executable will be installed in
+=/usr/local/riscv32-esp-elf/bin/riscv32-esp-elf-gdb=. For convenience it's a
+good idea to define an alias for this long path:
 
 #+begin_src sh
   alias gdb-rv=/usr/local/riscv32-esp-elf/bin/riscv32-esp-elf-gdb
 #+end_src
 
-** Build and run the application with debugging symbols
+** Build application with debugging symbols
 
-The [[./3.org][previous]] post used the FreeRTOS' [[https://github.com/FreeRTOS/FreeRTOS/tree/main/FreeRTOS/Demo/RISC-V-Qemu-virt_GCC][RISC-V-Qemu-virt_GCC]] demo as an example;
-here we'll continue using the same example. To build the application for
-debugging, we need to adjust the =Makefile= to use the correct =CFLAGS=.
+[[./3.org][Previously]] we used the FreeRTOS' [[https://github.com/FreeRTOS/FreeRTOS/tree/main/FreeRTOS/Demo/RISC-V-Qemu-virt_GCC][RISC-V-Qemu-virt_GCC]] demo as an example; in
+this post we'll continue to use the same example. To build the application for
+debugging, we need to edit the =Makefile= so it uses the correct =CFLAGS= for
+debugging.
 
-Replace snippet:
+Replace the following flags:
 #+begin_src c
   ifeq ($(DEBUG), 1)
     CFLAGS += -Og -ggdb3
 #+end_src
 
-With this:
+With these flags (refer to [[See also]] section for details):
 #+begin_src c
   ifeq ($(DEBUG), 1)
     CFLAGS += -O0 -gdwarf-2
@@ -56,8 +57,10 @@ The application can now be built for debugging:
   DEBUG=1 gmake
 #+end_src
 
-Run the application with =qemu= using the =-s= switch to enable the gdb server
-which is accessible on /port 1234/:
+** Run the application
+
+Run the application with =qemu= using the =-s= switch, this will enable the gdb
+server and will make it reachable on /port 1234/:
 #+begin_src sh
     # run the demo
   qemu-system-riscv32 -s -nographic -machine virt -net none \
@@ -68,15 +71,15 @@ which is accessible on /port 1234/:
 
 ** Connect GDB with the remote target
 
-Once the application is running, we can execute =gdb= in another terminal to
-connect to the remote target (using the alias defined previously):
+Once the application is running, we can execute =gdb= in another terminal and
+connect to the remote target. Using the alias previously defined:
 
 #+begin_src sh
   gdb-rv build/RTOSDemo.axf
 #+end_src
 
-From the =gdb='s prompt, set the architecture, connect to the remote target and
-set a breakpoint:
+From the =gdb='s prompt, set the architecture, then connect to the remote target
+and finally set a breakpoint:
 
 #+begin_src text
   (gdb) set architecture riscv:rv64
@@ -87,7 +90,7 @@ set a breakpoint:
 #+end_src
 
 After entering the =continue= command, the application will to execute until it
-hits the breakpoint; at this point we have our debugging session ready for use.
+hits the breakpoint; at this point we have our debugging session ready to use.
 
 ** See also
 
