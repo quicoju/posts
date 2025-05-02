@@ -46,7 +46,7 @@ Replace the following flags:
     CFLAGS += -Og -ggdb3
 #+end_src
 
-With these flags (refer to [[See also]] section for details):
+With these flags (refer to the [[See also]] section for details):
 #+begin_src c
   ifeq ($(DEBUG), 1)
     CFLAGS += -O0 -gdwarf-2
