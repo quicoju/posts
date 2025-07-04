@@ -13,3 +13,4 @@
 *** 2025-01-17 | [[./2.org][Setup ESP32 development tools in Gentoo]] :gentoo:embedded:esp32:
 *** 2025-02-24 | [[./3.org][The RISC-V GNU Toolchain, FreeRTOS and QEMU]] :riscv:freertos:qemu:
 *** 2025-05-01 | [[./4.org][Debug a FreeRTOS RISC-V application running on QEMU]] :riscv:freertos:qemu:
+*** 2025-07-04 | [[./5.org][Build an I2C scanner for ESP32]]          :esp32:i2c:embedded:

@@ -1,0 +1,88 @@
+#+TITLE: YAGNI
+#+DATE: 2025-07-04
+#+SUBTITLE: You are(n't)? gonna need it...
+#+DESCRIPTION: Build an I2C scanner
+#+KEYWORDS: esp32 i2c embedded
+
+#+HTML_LINK_HOME: index.html
+#+HTML_LINK_UP: 4.html
+
+* Build an I2C scanner for ESP32
+
+** About
+
+This post will explain how to build the /I2C Tools Example/ included in the ESP-IDF
+framework.
+
+This tool set include a $I^2C$ scanner, which is useful to discover the
+components attached to an $I^2C$ bus and to discover their corresponding
+addresses.
+
+The /I2C Tools Example/ is implemented as a /CLI/ like interface using the ESP32
+[[https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/console.html][Console]] component.
+
+** Build the /I2C Tools Example/
+
+Building the tool set is as simple as building any other ESP-IDF example. First
+copy the ~i2c_tools~ folder included in the framework to a writable location:
+
+#+begin_src sh
+  cp -r $IDF_PATH/examples/peripherals/i2c/i2c_tools ~
+  cd ~/i2c_tools
+#+end_src
+
+Then set the target, build, flash and monitor the project:
+#+begin_src sh
+  idf set-target esp32c3
+  idf build flash monitor
+#+end_src
+
+A successful setup will launch the CLI with the following prompt:
+#+begin_src txt
+Type 'help' to get the list of commands.
+Use UP/DOWN arrows to navigate through command history.
+Press TAB when typing command name to auto-complete.
+I (319) main_task: Returned from app_main()
+i2c-tools>
+#+end_src
+
+** Run the scanner
+
+Before scanning the $I^2C$ bus, we have to configure the GPIOs used for the
+/data/ and /clock/ lines. The following configuration is using GPIOs 18 and 19 for
+the SCL and SDA lines respectively:
+
+#+begin_src txt
+  i2c-tools> i2cconfig --scl=18 --sda=19
+#+end_src
+
+Now it should be possible to scan the bus by running =i2cdetect=:
+
+#+begin_src txt
+  i2c-tools> i2cdetect
+#+end_src
+
+The following output shows that we have two different $I^2C$ components
+connected to the bus, one with the address =0x48= and another one with the
+address =0x68=.
+
+#+begin_src txt
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+40: -- -- -- -- -- -- -- -- 48 -- -- -- -- -- -- -- 
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+60: -- -- -- -- -- -- -- -- 68 -- -- -- -- -- -- -- 
+70: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+#+end_src
+
+As usual to exit the monitor use =Ctrl+]=.
+
+** See also
+1. The [[https://github.com/espressif/esp-idf/tree/v5.4.2/examples/peripherals/i2c/i2c_tools][I2C Tools Example]]
+2. The [[https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/peripherals/i2c.html][ESP-IDF I2C]] documentation
+
+
+
