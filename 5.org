@@ -14,7 +14,7 @@
 This post will explain how to build the /I2C Tools Example/ included in the ESP-IDF
 framework.
 
-This tool set include a $I^2C$ scanner, which is useful to discover the
+This tool set includes a $I^2C$ scanner, which is useful to discover the
 components attached to an $I^2C$ bus and to discover their corresponding
 addresses.
 
@@ -78,7 +78,7 @@ address =0x68=.
 70: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
 #+end_src
 
-As usual to exit the monitor use =Ctrl+]=.
+Exit the monitor with =Ctrl+]=.
 
 ** See also
 1. The [[https://github.com/espressif/esp-idf/tree/v5.4.2/examples/peripherals/i2c/i2c_tools][I2C Tools Example]]
