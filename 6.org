@@ -5,6 +5,7 @@
 #+DESCRIPTION:
 #+KEYWORDS: privacy security
 
+#+OPTIONS: -:nil
 #+HTML_LINK_HOME: index.html
 #+HTML_LINK_UP:  5.html
 
@@ -16,9 +17,9 @@ This post attempts to summarize the most frequent tasks when it comes to
 encrypting data and managing encryption keys.
 
 It focuses on the GNU Privacy Guard (GPG), which is the GNU's implementation of
-OpenPGP. All the examples are executed from the command line using the =gpg=
-command, but the concepts can be extended to other clients i.e Emacs,
-OpenKeyChain, etc.
+OpenPGP. All the examples in this post are executed on the command line using
+the =gpg= command, but concepts presented here can be extended to other clients
+i.e Emacs, OpenKeyChain, etc.
 
 ** Managing keys locally
 
@@ -29,8 +30,9 @@ key server.
 *** Personal keys
 
 To generate a new key pair (public/private) use the =--gen-key= switch. This
-command will suggest sensible defaults and it will create a "revocation
-certificate" which is stored in the =.gnupg/openpgp-revocs.d= folder.
+command will suggest sensible defaults when creating the new key pair and it
+will also create a "revocation certificate" which is stored in the
+=.gnupg/openpgp-revocs.d= folder.
 
 #+begin_src sh
   gpg --gen-key
@@ -71,7 +73,7 @@ used to identify a key.
 
 *** Other people's public keys
 
-To add a public key from a /trusted/ source to your "keyring", use the =--import=
+To add a public key from a /trusted/ source to your keyring, use the =--import=
 command:
 
 #+begin_src sh
@@ -88,35 +90,39 @@ then you can sign it and tell =gpg= that you trust the key:
 /Note:/ Refer to the [[*View the keys in the keyring][previous section]] to see how to extract the key's identifier
 using =gpg -k=.
 
+
 ** Encrypt
 
 Now that we have basic knowledge about how manage the keyring, we can proceed to
-explore the encryption step. For encrypting data there are a few relevant
-command options to know about:
+explore the encryption step. For encrypting data there is one command and a few
+relevant options to know about:
 
-  - *encrypt (-e)*: Tells =gpg= that we intend to encrypt data. It takes an
-    optional filename as an argument, this refers to the file to be encrypted;
-    if no filename is provided then it reads the data from the standard input.
-  - *recipient (-r)*: It takes an argument, which is the key identifier of the
-    recipient to whom the data is to be encrypted. It's possible to provide
-    multiple =--recipient= arguments if the message is intended for more than
-    one person.
-  - *armor (-a)*: This is an optional argument and it requests that the
-    encrypted output is to be represented as readable ASCII rather than using
-    the OpenPGP binary format.
-  - *sign (-s)*: This optional argument requests that the encrypted output is to
-    be signed with our "default-key". This way, the recipient can verify that
-    the encrypted message comes from the person who claims to be the sender.
+  - *--encrypt (-e)*: This command tells =gpg= that we intend to encrypt data. It
+    takes an optional filename as an argument, which refers to the file to be
+    encrypted; if no filename is provided then it reads the data from the
+    standard input.
+  - *--recipient (-r)*: This option takes an argument, which is the key identifier
+    of the recipient to whom the data is to be encrypted. It's possible to use
+    =--recipient= multiple times in a single command when the encrypted message
+    is intended for more than one person.
+  - *--armor (-a)*: This is switch is optional and it requests that the encrypted
+    data is to be represented as readable ASCII rather than using the OpenPGP
+    binary format.
+  - *--sign (-s)*: This switch is also optional and requests that the encrypted
+    data is to be signed with our "default-key". With a signature, the recipient
+    can verify that the encrypted message comes from the person who claims to be
+    the sender.
 
 *** Messages
 
-Once that we know about the command line options that can be used for encrypting
-data, we can proceed to encrypt message.
+Now that we know about the relevant command line options for encrypting data, we
+can proceed to encrypt message.
 
-To encrypt a message, we just need to know that if the =--encrypt= switch didn't
-take a filename as an argument, then it reads its input from STDIN and that the
-encrypted data will be sent to STDOUT. This means that in order to encrypt a
-message it should be enough to redirect the standard input and output as in:
+To encrypt a message, we just need to know that if the =--encrypt= command
+didn't take a filename as an argument, then it reads its input from STDIN and
+that the encrypted data will be sent to STDOUT. This means that in order to
+encrypt a message it should be enough to redirect the standard input and output
+as in:
 #+begin_src sh
   gpg --recipient Ritchie --recipient Buddy --armor --encrypt <<END > encrypted.txt.asc
   Let's rock!!
@@ -127,43 +133,45 @@ message it should be enough to redirect the standard input and output as in:
 
 Given the previous section, we now know that we can pass a file name to the
 =--encrypt= command and it'll encrypt it and generate a new file with the
-encrypted data. The following example uses the option's "short names", and
-includes multiple recipients (including the sender):
+encrypted data. The following example uses the options' "short names", and
+includes multiple recipients.
 
 #+begin_src sh
   gpg -r Ritchie -r Buddy -r Me -sae rocknroll.txt
 #+end_src
 
-It'll generate an encrypted file with extension =gpg= if no =--armor= option was
-used, otherwise the extension will be =asc=.
+If no =--armor (-a)= option was used, the command will generate an encrypted file
+with extension =gpg= , otherwise the extension is =asc=.
 
 ** Decrypt
 
-Use the =--decrypt (-d)= switch to decrypt a message. This switch takes an
+Use the =--decrypt (-d)= command to decrypt a message. This switch takes an
 optional argument which is the name of the file to decrypt; if no filename is
-provided, then it reads the date from STDIN. By default, the decrypted data will
+provided, then it reads the data from STDIN. By default, the decrypted data will
 be written in STDOUT unless the =--output (-o)= option is used, i.e:
 
 #+begin_src sh
   gpg -o rocknroll.txt -d rocknroll.txt.asc
 #+end_src
 
-** Also important
+** Important
 
-1. If you encrypt a file and you don't include yourself as a "recipient" then
-   you won't be able to decrypt it.
-2. It's possible to "sign" data without encrypting it using the =--sign (-s)=
-   switch, see the man page for more information.
-3. The signature can be detached from the data using the =--detach-sign (-b)=
-   switch.
-4. Use the =--verify= option to verify the signature.
-5. People use =openpgp= key servers to share their public keys. If one is to be
-   used, make sure you use one that is reliable and follow the practices for
-   verifying and trusting of the public keys.
-6. If a key is compromised and/or needs to be removed, then it's important to
-   "revoke" it. In a [[*Personal keys][previous section]], it was mentioned that a revocation
-   certificate is created when a new key pair is created, this certificate can
-   be used to revoke the key, refer to the [[*See also][next section]].
+- If you encrypt a file and you don't include yourself as a "recipient" then you
+  won't be able to decrypt it.
+- It's possible to "sign" data without encrypting it using the =--sign (-s)=
+  switch, see the man page for more information.
+- The signature can be detached from the data by using the =--detach-sign (-b)=
+  switch.
+- Use the =--verify= option to verify the signature.
+- People use =openpgp= key servers to share their public keys. If one is to be
+  used, make sure you use one that is reliable and follow the practices for
+  verifying and trusting public keys.
+- If a key is compromised and/or needs to be removed, then it's important to
+  "revoke" it. In a [[*Personal keys][previous section]], it was mentioned that a revocation
+  certificate is created when a new key pair is created, this certificate can be
+  used to revoke the key, refer to the [[*See also][next section]].
+- To delete a key, you may use =--delete-keys= or
+  =--delete-secret-and-public-key=, see the man page for more information.
 
 ** See also
 1. The [[https://www.gnupg.org/documentation/manuals/gnupg24/gpg.1.html][gpg man page]]
