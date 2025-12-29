@@ -14,8 +14,8 @@
 ** About
 
 This post attempts to summarize the most frequent tasks when it comes to
-encrypting data and managing encryption keys. It focuses on the GNU Privacy Guard (GPG), which is the GNU's implementation of
-OpenPGP.
+encrypting data and managing encryption keys. It focuses on the GNU Privacy
+Guard (GPG), which is the GNU's implementation of OpenPGP.
 
 All the examples in this post are executed in the command line using the =gpg=
 program. The concepts presented here can be extended to other clients i.e Emacs,
