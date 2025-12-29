@@ -98,7 +98,7 @@ key. The public key can be signed by issuing the =--sign-key= command.
   gpg --sign-key key_identifier
 #+end_src
 
-/Note:/ Refer to the [[*View the keys in the keyring][previous section]] to see how to extract the key's identifier
+/Note:/ Refer to the [[*List the keys in the keyring][previous section]] to see how to extract the key's identifier
 using =gpg -k=.
 
 ** Encrypt
