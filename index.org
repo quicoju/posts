@@ -7,7 +7,6 @@
 #+HTML_LINK_HOME: index.html
 #+HTML_LINK_UP: index.html
 
-
 ** Posts
 *** 2025-01-12 | [[./1.org][Publish a static site with Emacs]]          :blogging:orgmode:
 *** 2025-01-17 | [[./2.org][Setup ESP32 development tools in Gentoo]] :gentoo:embedded:esp32:
@@ -15,3 +14,4 @@
 *** 2025-05-01 | [[./4.org][Debug a FreeRTOS RISC-V application running on QEMU]] :riscv:freertos:qemu:
 *** 2025-07-04 | [[./5.org][Build an I2C scanner for ESP32]]          :esp32:i2c:embedded:
 *** 2025-11-06 | [[./6.org][Encrypt data using OpenPGP]]             :encrypt:privacy:gpg:
+*** 2026-01-06 | [[file:7.org][Integrate GNU Privacy Guard (GPG) with other tools]] :gpg:privacy:git:emacs:

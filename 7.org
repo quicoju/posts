@@ -1,0 +1,81 @@
+#+TITLE: YAGNI
+#+DATE: 2026-01-06
+
+#+SUBTITLE: You are(n't)? gonna need it...
+#+DESCRIPTION:
+#+KEYWORDS: gpg privacy git emacs
+
+#+HTML_LINK_HOME: index.html
+#+HTML_LINK_UP:  6.html
+
+* Integrate GNU Privacy Guard (GPG) with other tools
+
+** About
+
+This post will show different ways to [[file:6.org][integrate GPG]] with external tools to
+[[file:6.org::Encrypt][encrypt]] and/or sign different types of data.
+
+The following sections /assume/ that the reader owns a [[file:6.org::Personal keys][personal]] GPG key.
+
+** Keeping passwords secure using Emacs
+
+The Emacs manual [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Authentication.html][explains]] that the =auth-source= library is used to keep
+password information persistent for providing it to services that might require
+it, this information is kept secure in the =~/.authinfo.gpg= file.
+
+The reason why this file is secure by default is because Emacs treats files with
+extension =gpg= as encrypted files; this means that when a file with this
+extension is opened inside Emacs, it'll prompt users for their "gpg" passphrase
+(required for decrypting); similarly when the user saves such files they're
+stored encrypted.
+
+Of course the decryption only works if the user opening the file is the actual
+recipient of the encrypted file.
+
+*** The Pinentry
+
+The /Pinentry/ is a component of GPG that securely prompts users for
+passphrases. Some systems use by default Pinentry components that don't
+integrate well with Emacs, i.e. the curses based Pinentry.
+
+The "loopback" Pinentry allows Emacs to smoothly integrate with GPG. To set this
+Pinentry as the default, add the following line to the =~/.gnupg/gpg.conf= file:
+
+#+begin_src text
+pinentry-mode loopback
+#+end_src
+
+Also configure the =epg= package to control the behavior of the Pinentry
+invocation:
+
+#+begin_src elisp
+  (setq epg-pinentry-mode 'loopback)
+#+end_src
+
+
+** Signing Git commits
+
+Git [[https://git-scm.com/book/en/v2/Git-Tools-Signing-Your-Work][supports]] signing commits using GPG. To achieve this, configure the
+=commit.gpgsign= setting as in:
+
+#+begin_src sh
+  git config --global commit.gpgsign true
+#+end_src
+
+This setting will sign the commits using the user's default key, but in order to
+be specific about which key to use then configure the =user.signingkey= using
+the key's [[file:6.org::List the keys in the keyring][identifier]]:
+
+#+begin_src sh
+ git config --global user.signingkey me@email.com
+#+end_src
+
+With these settings in place, new commits will be GPG signed.
+
+It's also possible to share the public keys with services such as Github so they
+can verify the signatures of the pushed commits.
+
+** See also
+
+1. The [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Authentication.html][authentication]] section in the Emacs manual
+2. Previous [[file:6.org][post]] about encrypting data
