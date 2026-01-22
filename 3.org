@@ -14,7 +14,7 @@
 Emulation eases the software development process when the target architecture is
 different than the host machine. This document explains how to setup a
 development [[https://en.wikipedia.org/wiki/Toolchain][Toolchain]] and use the Quick Emulator ([[https://www.qemu.org/][QEMU)]] to run a [[https://www.freertos.org/Why-FreeRTOS/What-is-FreeRTOS][FreeRTOS]] "demo"
-targeted to the RISCV-V architecture.
+targeted to the RISC-V architecture.
 
 The explanation goes for two different operating systems, Gentoo GNU/Linux and
 OpenBSD.
